@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feee969456f87a846a237eddcf0b449a, type: 3}
+  m_Name: FireHeldAttack
+  m_EditorClassIdentifier: 
+  _shotsPerSecond: 15
+  _projectile: {fileID: 7014966142282120147, guid: 41f673fff6b0be3478f7b27fb1cefab1, type: 3}
+  _manaCost: 5
+  _castSound: {fileID: 0}
+  _volume: 0.5
