@@ -34,8 +34,11 @@ public class DefaultDashState : PlayerState
         _moveVector = InputManager.Instance.MoveAction.ReadValue<Vector2>().normalized;
         player.StartCoroutine(Dash());
 
-        audioSource.pitch = UnityEngine.Random.Range(_minPitch, _maxPitch);
-        audioSource.PlayOneShot(_dashSound);
+        if (audioSource && _dashSound)
+        {
+            audioSource.pitch = UnityEngine.Random.Range(_minPitch, _maxPitch);
+            audioSource.PlayOneShot(_dashSound);
+        }
     }
 
     public override void ExitState()

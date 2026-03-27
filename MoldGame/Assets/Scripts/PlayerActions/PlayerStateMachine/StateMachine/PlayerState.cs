@@ -17,7 +17,7 @@ public class PlayerState : ScriptableObject
         transform = gameObject.transform;
         this.player = player;
         this.playerStateMachine = playerStateMachine;
-        this.audioSource = gameObject.GetComponent<AudioSource>();
+        this.audioSource = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     public virtual void EnterState() 

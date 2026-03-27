@@ -16,8 +16,13 @@ public class ManaManager : MonoBehaviour
     [SerializeField][Min(0.01f)][Tooltip("(X * MaxMana)/second")]
     private float _manaPercentageRegen;
     [SerializeField][Min(5f)][Tooltip("Current mana added to regen speed / X")]
-    private float _MaxManaRegenBonusDenominator;
+    private float _maxManaRegenBonusDenominator;
     public float CurrentMana;
+    [SerializeField]
+    [Min(0.1f)]
+    [Tooltip("Time in seconds until mana starts to regenerate")]
+    private float _manaRegenWaitTime;
+    private float _waitTimer;
     public UnityEvent ManaChange;
 
     // Start is called before the first frame update
@@ -35,14 +40,25 @@ public class ManaManager : MonoBehaviour
 
     private void RegenMana()
     {
+        if (_waitTimer > 0)
+        {
+            _waitTimer -= Time.deltaTime;
+            return;
+        }
+
         if (CurrentMana > _maxMana)
         {
             CurrentMana = _maxMana;
         }
         else if (CurrentMana < _maxMana)
         {
-            CurrentMana += ((_manaPercentageRegen * _maxMana) + _maxMana/_MaxManaRegenBonusDenominator) * Time.deltaTime;
+            CurrentMana += ((_manaPercentageRegen * _maxMana) + _maxMana/_maxManaRegenBonusDenominator) * Time.deltaTime;
             ManaChange.Invoke();
         }
+    }
+
+    public void ResetRegenWaitTime()
+    {
+        _waitTimer = _manaRegenWaitTime;
     }
 }

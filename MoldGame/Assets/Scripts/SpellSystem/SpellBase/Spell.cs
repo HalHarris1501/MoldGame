@@ -71,6 +71,7 @@ public class Spell : ScriptableObject
         {
             HeldCastInstance.Activate();
             owner.ManaManager.CurrentMana -= heldManaCost;
+            owner.ManaManager.ResetRegenWaitTime();
             owner.ManaManager.ManaChange.Invoke();
         }
     }
@@ -98,6 +99,7 @@ public class Spell : ScriptableObject
         {
             QuickCastInstance.Activate();
             owner.ManaManager.CurrentMana -= quickManaCost;
+            owner.ManaManager.ResetRegenWaitTime();
             owner.ManaManager.ManaChange.Invoke();
         }
     }
