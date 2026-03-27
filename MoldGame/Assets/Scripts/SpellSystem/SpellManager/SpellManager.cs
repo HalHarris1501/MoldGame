@@ -65,7 +65,7 @@ public class SpellManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (InputManager.Instance)
+        if (InputManager.Instance != null)
         {
             InputManager.Instance.QuickSwapSpell.performed -= QuickSwapSpell;
             InputManager.Instance.InputManagerInitialized.RemoveListener(SetupControls);
