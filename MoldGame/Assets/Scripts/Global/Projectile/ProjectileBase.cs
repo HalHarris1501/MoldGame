@@ -6,9 +6,11 @@ public class ProjectileBase : MonoBehaviour
 {
     [Header("Gameplay Variables")]
     [SerializeField] 
-    private float _moveSpeed = 10;
+    private float _moveSpeed = 10f;
     [SerializeField][Tooltip("In seconds")]
-    private float _duration = 1;
+    private float _duration = 1f;
+    [SerializeField][Min(0.1f)]
+    private float _damage = 1f;
     [SerializeField]
     private LayerMask _collidables;
 
@@ -41,7 +43,7 @@ public class ProjectileBase : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & _collidables) != 0)
         {
-            Deactivate();
+            HitObject(collision);
         }
     }
 
@@ -64,5 +66,15 @@ public class ProjectileBase : MonoBehaviour
     {
         float range = _duration * _moveSpeed;
         return range;
+    }
+
+    private void HitObject(Collider2D collision)
+    {
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.Damage(_damage);
+        }
+        Deactivate();
     }
 }

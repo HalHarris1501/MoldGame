@@ -108,9 +108,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 20
   _duration: 0.5
+  _damage: 5
   _collidables:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   _volume: 0.1
   _spawnSound: {fileID: 8300000, guid: 389f78af14b47114f9ff59a5c78c8ccc, type: 3}
   _destroySound: {fileID: 0}
